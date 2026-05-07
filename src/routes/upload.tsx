@@ -53,7 +53,7 @@ function UploadPage() {
     if (!preview || !allRows.length) return;
     toast.info(`Starting pipeline on ${allRows.length.toLocaleString()} rows…`);
     try {
-      await startProcessing(allRows, preview.fileName, chunkSize);
+      await startProcessing(allRows as never, preview.fileName, chunkSize);
       toast.success("Pipeline complete");
       navigate({ to: "/monitor" });
     } catch (e) {

@@ -10,12 +10,30 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UploadRouteImport } from './routes/upload'
+import { Route as ReviewRouteImport } from './routes/review'
+import { Route as QualityRouteImport } from './routes/quality'
 import { Route as MonitorRouteImport } from './routes/monitor'
+import { Route as MetricsRouteImport } from './routes/metrics'
+import { Route as LogsRouteImport } from './routes/logs'
+import { Route as ExportsRouteImport } from './routes/exports'
+import { Route as ClustersRouteImport } from './routes/clusters'
+import { Route as CandidatesRouteImport } from './routes/candidates'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ClustersViewRouteImport } from './routes/clusters.view'
 
 const UploadRoute = UploadRouteImport.update({
   id: '/upload',
   path: '/upload',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReviewRoute = ReviewRouteImport.update({
+  id: '/review',
+  path: '/review',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QualityRoute = QualityRouteImport.update({
+  id: '/quality',
+  path: '/quality',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MonitorRoute = MonitorRouteImport.update({
@@ -23,39 +41,134 @@ const MonitorRoute = MonitorRouteImport.update({
   path: '/monitor',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MetricsRoute = MetricsRouteImport.update({
+  id: '/metrics',
+  path: '/metrics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LogsRoute = LogsRouteImport.update({
+  id: '/logs',
+  path: '/logs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExportsRoute = ExportsRouteImport.update({
+  id: '/exports',
+  path: '/exports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClustersRoute = ClustersRouteImport.update({
+  id: '/clusters',
+  path: '/clusters',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CandidatesRoute = CandidatesRouteImport.update({
+  id: '/candidates',
+  path: '/candidates',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ClustersViewRoute = ClustersViewRouteImport.update({
+  id: '/view',
+  path: '/view',
+  getParentRoute: () => ClustersRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/candidates': typeof CandidatesRoute
+  '/clusters': typeof ClustersRouteWithChildren
+  '/exports': typeof ExportsRoute
+  '/logs': typeof LogsRoute
+  '/metrics': typeof MetricsRoute
   '/monitor': typeof MonitorRoute
+  '/quality': typeof QualityRoute
+  '/review': typeof ReviewRoute
   '/upload': typeof UploadRoute
+  '/clusters/view': typeof ClustersViewRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/candidates': typeof CandidatesRoute
+  '/clusters': typeof ClustersRouteWithChildren
+  '/exports': typeof ExportsRoute
+  '/logs': typeof LogsRoute
+  '/metrics': typeof MetricsRoute
   '/monitor': typeof MonitorRoute
+  '/quality': typeof QualityRoute
+  '/review': typeof ReviewRoute
   '/upload': typeof UploadRoute
+  '/clusters/view': typeof ClustersViewRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/candidates': typeof CandidatesRoute
+  '/clusters': typeof ClustersRouteWithChildren
+  '/exports': typeof ExportsRoute
+  '/logs': typeof LogsRoute
+  '/metrics': typeof MetricsRoute
   '/monitor': typeof MonitorRoute
+  '/quality': typeof QualityRoute
+  '/review': typeof ReviewRoute
   '/upload': typeof UploadRoute
+  '/clusters/view': typeof ClustersViewRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/monitor' | '/upload'
+  fullPaths:
+    | '/'
+    | '/candidates'
+    | '/clusters'
+    | '/exports'
+    | '/logs'
+    | '/metrics'
+    | '/monitor'
+    | '/quality'
+    | '/review'
+    | '/upload'
+    | '/clusters/view'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/monitor' | '/upload'
-  id: '__root__' | '/' | '/monitor' | '/upload'
+  to:
+    | '/'
+    | '/candidates'
+    | '/clusters'
+    | '/exports'
+    | '/logs'
+    | '/metrics'
+    | '/monitor'
+    | '/quality'
+    | '/review'
+    | '/upload'
+    | '/clusters/view'
+  id:
+    | '__root__'
+    | '/'
+    | '/candidates'
+    | '/clusters'
+    | '/exports'
+    | '/logs'
+    | '/metrics'
+    | '/monitor'
+    | '/quality'
+    | '/review'
+    | '/upload'
+    | '/clusters/view'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CandidatesRoute: typeof CandidatesRoute
+  ClustersRoute: typeof ClustersRouteWithChildren
+  ExportsRoute: typeof ExportsRoute
+  LogsRoute: typeof LogsRoute
+  MetricsRoute: typeof MetricsRoute
   MonitorRoute: typeof MonitorRoute
+  QualityRoute: typeof QualityRoute
+  ReviewRoute: typeof ReviewRoute
   UploadRoute: typeof UploadRoute
 }
 
@@ -68,11 +181,60 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UploadRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/review': {
+      id: '/review'
+      path: '/review'
+      fullPath: '/review'
+      preLoaderRoute: typeof ReviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quality': {
+      id: '/quality'
+      path: '/quality'
+      fullPath: '/quality'
+      preLoaderRoute: typeof QualityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/monitor': {
       id: '/monitor'
       path: '/monitor'
       fullPath: '/monitor'
       preLoaderRoute: typeof MonitorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/metrics': {
+      id: '/metrics'
+      path: '/metrics'
+      fullPath: '/metrics'
+      preLoaderRoute: typeof MetricsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/logs': {
+      id: '/logs'
+      path: '/logs'
+      fullPath: '/logs'
+      preLoaderRoute: typeof LogsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/exports': {
+      id: '/exports'
+      path: '/exports'
+      fullPath: '/exports'
+      preLoaderRoute: typeof ExportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/clusters': {
+      id: '/clusters'
+      path: '/clusters'
+      fullPath: '/clusters'
+      preLoaderRoute: typeof ClustersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/candidates': {
+      id: '/candidates'
+      path: '/candidates'
+      fullPath: '/candidates'
+      preLoaderRoute: typeof CandidatesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -82,12 +244,38 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/clusters/view': {
+      id: '/clusters/view'
+      path: '/view'
+      fullPath: '/clusters/view'
+      preLoaderRoute: typeof ClustersViewRouteImport
+      parentRoute: typeof ClustersRoute
+    }
   }
 }
 
+interface ClustersRouteChildren {
+  ClustersViewRoute: typeof ClustersViewRoute
+}
+
+const ClustersRouteChildren: ClustersRouteChildren = {
+  ClustersViewRoute: ClustersViewRoute,
+}
+
+const ClustersRouteWithChildren = ClustersRoute._addFileChildren(
+  ClustersRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CandidatesRoute: CandidatesRoute,
+  ClustersRoute: ClustersRouteWithChildren,
+  ExportsRoute: ExportsRoute,
+  LogsRoute: LogsRoute,
+  MetricsRoute: MetricsRoute,
   MonitorRoute: MonitorRoute,
+  QualityRoute: QualityRoute,
+  ReviewRoute: ReviewRoute,
   UploadRoute: UploadRoute,
 }
 export const routeTree = rootRouteImport

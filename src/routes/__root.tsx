@@ -80,6 +80,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "UBID Resolve — Business Identity Platform" },
+      { name: "twitter:description", content: "Enterprise business identity preprocessing, normalization, entity resolution and clustering platform." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/35206718-e856-44ee-8a56-6c096a6680b9/id-preview-f1206007--e5ea4e31-7920-4c8b-9244-2bff5b906eab.lovable.app-1778167850646.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/35206718-e856-44ee-8a56-6c096a6680b9/id-preview-f1206007--e5ea4e31-7920-4c8b-9244-2bff5b906eab.lovable.app-1778167850646.png" },
     ],
     links: [
       {

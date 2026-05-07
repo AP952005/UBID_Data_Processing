@@ -72,11 +72,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "UBID Resolve — Business Identity Platform" },
+      { name: "description", content: "Enterprise business identity preprocessing, normalization, entity resolution and clustering platform." },
+      { name: "author", content: "UBID Resolve" },
+      { property: "og:title", content: "UBID Resolve — Business Identity Platform" },
+      { property: "og:description", content: "Enterprise business identity preprocessing, normalization, entity resolution and clustering platform." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
@@ -108,12 +108,18 @@ function RootShell({ children }: { children: React.ReactNode }) {
   );
 }
 
+import { AppShell } from "@/components/AppShell";
+import { Toaster } from "sonner";
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <AppShell>
+        <Outlet />
+      </AppShell>
+      <Toaster position="top-right" richColors />
     </QueryClientProvider>
   );
 }
